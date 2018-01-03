@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>用户登录</title>
+
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link href="css/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/smh_alert.js" type="text/javascript" charset="utf-8"></script>
+   
+    <script type="text/javascript"> 		
+		$(document).ready(function() {	
+			var sub=$('#login_submit'); //登录按钮
+			var phone= $("#login_phone"); //手机号
+			var yzm= $("#login_yzm"); //验证码
+			var must=$('.login_must');  //手机号和验证码
+			var yzm_button=$('#login_yzm_button'); //验证码按钮			
+			var InterValObj; //timer变量，控制时间
+			var count = 60; //间隔函数，1秒执行
+			var curCount;//当前剩余秒数	
+			yzm_button.click(function(){
+				if(yzm_button.text()!="获取验证码"){
+					return false;
+				}
+				var y=required()&&sphone();
+				if(y==true){
+					curCount = count;
+				　　//设置button效果，开始计时
+				  yzm_button.text(curCount + "s");
+				  InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+				}else{
+					return false;
+				}
+
+			});			
+			//timer处理函数
+			function SetRemainTime() {
+	        if (curCount == 0) {                
+	            window.clearInterval(InterValObj);//停止计时器
+	            yzm_button.text("获取验证码");
+	        }
+	        else {
+	            curCount--;
+	            yzm_button.text(curCount + "s");
+	        }
+	  };			
+			//判断必填项是否输入,输入后登录按钮可点击
+//			must.keyup(function(){
+//	    	var l=phone.val().length;
+//	    	var m=yzm.val().length;
+//	    	if(l!=0&&m!=0){ green(sub); } else{ black(sub); }
+//	    });			
+			must.bind('input propertychange', function() {  
+				var l=phone.val().length;
+	    	var m=yzm.val().length;
+	    	if(l!=0&&m!=0){ green(sub); } else{ black(sub); } 
+			});
+	    
+
+			//登录按钮可点击
+			function green(a){
+				a.removeClass('login_form_sub_black').addClass('login_form_sub_green');
+//				alert('1');
+			}
+			
+			//登录按钮不可点击
+			function black(a){
+				a.removeClass('login_form_sub_green').addClass('login_form_sub_black');
+//				alert('2');
+			}
+			
+			//登录
+			sub.click(function(){
+				var t=login_sub(); //判断返回值,确认是否提交
+				if(t==true){
+					//提交
+				}else{
+					return false;
+				}
+			});			
+			//登录验证函数
+			function login_sub(){
+				if($('#rated_button').hasClass('login_form_sub_black')){
+					return false;
+				}
+				else{
+					var state=smh_alert(); //验证函数
+					if(state==true){
+						console.log("验证成功");
+						//请求后台判断验证码是否正确
+						//正确
+						//不正确alertmessage("您输入的验证码有误");
+						
+					}
+				}
+			}
+		});
+	</script>
+    <style>
+	  #login_art #login_form p label{
+	  	width:2.2rem;
+	  }
+	  #login_art #login_form .login_form_p2 input{
+	  	width:2.8rem;
+	  	margin-left: 0.2rem;
+	  }
+	  #login_art #login_form .login_form_p4 input{
+	  	width:2.8rem;
+	  	margin-left: 0.2rem;
+	  }
+	  #login_art #login_form .login_form_p1 input{
+	  	width:6rem;
+	  }
+	  .validation{
+	  	width:2.4rem;
+	  	height:0.8533333333333334rem;
+	  	display: block;
+	  	background:#09B1B0;
+	  }
+	  .validation1{
+	  	width:2.4rem;
+	  	height:0.8533333333333334rem;
+	  	display: block;
+	  	background:#09B1B0;
+	  }
+	  #login_art #login_form .login_form_p3 input{
+	  	width:3.2rem;
+	  }	  
+	</style>
+  </head> 
+  <body>
+  	<div class="login_box">
+	  	<article id="login_art">	  		
+	  		<form id="login_form">	  			
+	      	<p class="login_form_p1">
+	      		<label for="login_phone">手机号:</label>
+	      		<input type="number" id="login_phone" name="" placeholder="" smh_phone="您输入的信息有误" class="login_must" smh_required="您输入的信息有误"/>
+	      	</p>	      	
+	      	<p class="login_form_p4">
+	      		<label for='login_yzm1'>验证码:</label>
+	      		<input type="number" id="login_yzm1" name="" placeholder="" smh_number="您输入的验证码有误" smh_num_code=4 smh_num_code_message="您输入的验证码有误" class="login_must"/>
+	      		<em id="login_yzm_button1">
+	      			<img src=""  class="validation1"/>
+	      		</em>
+	      	</p>	      	
+	      	<p class="login_form_p2">
+	      		<label for='login_yzm' style="width:2.4rem">短信验证码:</label>
+	      		<input type="number" id="login_yzm" name="" placeholder="" smh_number="您输入的验证码有误" smh_num_code=4 smh_num_code_message="您输入的验证码有误" class="login_must"/>
+	      		<em id="login_yzm_button">获取验证码</em>
+	      	</p>      	
+	      	<p class="login_form_p3">
+	      		<label for='login_yq'>邀请码:</label>
+	      		<input type="text" id="login_yq" name="" placeholder="" smh_invite_code="推荐码格式有误"/>
+	      		<em>（选填）</em>
+	      	</p>
+	      	
+	        <input type="button" class="login_form_sub login_form_sub_black" value="登录" id="login_submit"/>	        
+	     </form>	      
+	  	</article>	  	
+	    <p class="login_bottom">点击登录，即表示您同意<a href="#">用户协议</a></p>
+    </div>
+  </body>
+  <script type="text/javascript">
+  	var text = $('#login_yzm1').val();
+  	var img = $('#login_yzm_button1').children('img');
+  	$('#login_submit').click(function(){
+  		  if(text == img){
+  			   
+  		   }
+  	})
+  </script>
+</html>

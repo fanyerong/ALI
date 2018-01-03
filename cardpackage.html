@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员卡包</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/cardpackage.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<link rel="stylesheet" href="css/no.css" />
+	</head>
+	
+	<body>	
+		<div class="nav_list">
+			<div class="nva_lest_A">
+				<a class="active_vip active_on">平台会员卡</a>
+			</div>
+			<div class="nva_lest_A">
+				<a class="active_vip">专店会员卡</a>
+			</div>
+		</div>
+
+		<!--
+        	平台会员卡和专店会员卡切换：
+        -->
+		<script type="text/javascript">
+			$(function(){
+				$('.nav_list div').click(function(){
+					var index = $(this).index();
+					$(this).children('a').addClass('active_on');
+					$(this).siblings().children('a').removeClass('active_on');						
+				});
+				$('.nav_list div:first-child').click(function(){
+					$('#card_main').css('display','block');
+					$('.card_main').css('display','none');
+				})
+				$('.nav_list div:last-child').click(function(){
+					$('#card_main').css('display','none');
+					$('.card_main').css('display','block');
+				})
+				
+			})
+		</script>
+		<div class="kabao">
+					<article id="card_main" >				
+				<!--充钱后的状态-->
+				<!--金牌会员-->
+				<div class="card_list card1" >
+					<img src="images/card_jin.png"  class="jin"/>
+					<div class="card_list_top">
+						<p class="card_list_topl">VIP<span>金牌卡</span></p>						
+					</div>
+					<div class="card_list_center">
+						<div class="card_list_centerl"><span>8</span>折</div>
+						<div class="card_list_centerr">
+							<p class="card_list_centerr_p1">¥<span>500</span></p>
+							<p class="card_list_centerr_p2">终身有效</p>
+						</div>
+					</div>
+					<div class="card_list_bottom">						
+						<a href="#"><span>充值</span></a>
+					</div>
+				</div>				
+				<!--钻石会员-->
+				<div class="card_list card2" style="display: none;">
+					<div class="card_list_top">
+						<p class="card_list_topl">VIP<span>钻石卡</span></p>
+						
+					</div>
+					<div class="card_list_center">
+						<div class="card_list_centerl"><span>7</span>折</div>
+						<div class="card_list_centerr">
+							<p class="card_list_centerr_p1">¥<span>1000</span></p>
+							<p class="card_list_centerr_p2">终身有效</p>
+						</div>
+					</div>
+					<div class="card_list_bottom">
+						
+						<a href="#"><span>充值</span></a>
+					</div>
+				</div>									
+				<!--充钱以前的状态-->	
+			</article>
+			<article class="card_main" style="display: none;">
+				<div class="big_card">
+					<div class="card_top">
+						<img src="images/logo.png"  class="card_logo"/>
+						<span>诗奈尔上海总部</span>
+					</div>
+					<div class="card_bott">
+						<div class="money_card">
+							<div class="money_left">9<a>折</a></div>
+							<div class="money_right">
+								<span>余额</span>
+								<span>￥450.00</span>
+							</div>
+						</div>
+						<div class="people_card">
+							<div class="people_left">持卡人:赵芸</div>
+							<div class="people_right">充值</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+		<!--
+        	暂无相关数据
+        -->
+		<div id="null_data" style="display: none;">
+			<img src="images/dsffg.png"  />
+			<span>暂无平台会员卡</span>
+			<b>平台会员卡可享所有店铺洗护折扣</b>
+			<s>购买新卡</s>
+		</div>
+		<!--
+        	判断如果是金牌卡没有钻石卡就让他显示 升级为钻石卡
+        -->
+		<div class="otoo" style="display: none;">
+			<span>您可升级为钻石卡享受更多优惠</span>
+			<b>去升级</b>
+			
+		</div>
+		<!--
+        	判断如果是金牌卡和钻石卡都有就显示会员须知
+        -->
+		<div class="both" style="display: none;">
+			<span></span><b>我已阅读并同意</b><a>会员须知</a>
+		</div>
+	</body>
+	<style type="text/css">
+		#card_main .card1{
+			background:none;
+		}
+		.jin{
+			width:9.36rem;
+			height:4.573333333333333rem;
+			z-index: 1;
+			position: absolute;
+		}
+	</style>
+</html>

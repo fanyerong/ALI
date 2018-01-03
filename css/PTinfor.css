@@ -1,0 +1,49 @@
+
+.infor_tit{
+	width:100%;
+	height:2.5533333333333332rem;
+	border-bottom:1px solid #E0E0E0;
+}
+.infor_tit span{
+	display:block;
+	width:100%;
+	height:1.2rem;
+	line-height:1.2rem;
+	color:#333333;
+	font-size:0.45rem;
+	text-align:center;
+	overflow: hidden;  
+	white-space: nowrap;       
+	text-overflow: ellipsis;  
+	padding-top:0.32rem;
+}
+.infor_tit i{
+	display:block;
+	width:9.093333333333334rem;
+	height:0.84rem;
+	text-align:right;
+	color:#999999;
+	font-size:0.42rem;
+	margin:auto;
+	text-align:right;
+	font-style:normal;
+}
+.infor_count{
+	width:9.093333333333334rem;
+	height:auto;
+	margin:auto;
+}
+.inphoto{
+	width:100%;
+	height:4.68rem;
+	background:#F35F1E;
+    margin-top:0.38666666666666666rem;
+}
+.intext{
+	margin-top:0.38666666666666666rem;
+	height:auto;
+	width:100%;
+	line-height:0.76rem;
+	color:#4d4d4d;
+	font-size:0.39rem;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/rem.js"></script>
+  <link rel="stylesheet" href="css/reset.css" />
+  <title>消息通知</title>
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  body{background:#F5F5F5;}
+  .list{background:#FFFFFF;}
+  .list-ul {
+    overflow: hidden;
+    height:auto;
+  }  
+  .list-li {
+    height:1.68rem;
+    border-bottom: 1px solid #fcfcfc;
+    position: relative;
+   
+    color:#666;
+    background: #f2f2f2;
+    -webkit-transform: translateX(0px);
+  } 
+  .btn {
+    position: absolute;
+    top: 0;
+    right:-80px;
+    text-align: center;
+    background: #ffcb20;
+    color: #fff;
+    width:80px
+  }
+  .message-left{width:0.9333333333333333rem;height:1.68rem;display: inherit;float:left;}
+  .message-left img{display:block;width:0.27rem;height:0.27rem;}
+  .tixing{display:inherit;width:7rem;height:0.92rem;float:left;}
+  .tixing a{display: block;height:0.92rem;line-height:0.92rem;font-size:0.45rem;width:6rem;padding-top:0.24rem;
+        float:left;color:#5d5d5d;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;
+  }
+    .tixing b{display:block;width:3rem;height:0.92rem;line-height:0.92rem;font-size:0.45rem;float: right;font-weight: inherit;}
+  </style>
+  <script>
+  /*
+   * 描述：html5苹果手机向左滑动删除特效
+   */
+  window.addEventListener('load', function() {
+    var initX; //触摸位置
+    var moveX; //滑动时的位置
+    var X = 0; //移动距离
+    var objX = 0; //目标对象位置
+    window.addEventListener('touchstart', function(event) {
+      event.preventDefault();
+      var obj = event.target.parentNode;
+      if (obj.className == "list-li") {
+        initX = event.targetTouches[0].pageX;
+        objX = (obj.style.WebkitTransform.replace(/translateX\(/g, "").replace(/px\)/g, "")) * 1;
+      }
+      if (objX == 0) {
+        window.addEventListener('touchmove', function(event) {
+          event.preventDefault();
+          var obj = event.target.parentNode;
+          if (obj.className == "list-li") {
+            moveX = event.targetTouches[0].pageX;
+            X = moveX - initX;
+            if (X >= 0) {
+              obj.style.WebkitTransform = "translateX(" + 0 + "px)";
+            } else if (X < 0) {
+              var l = Math.abs(X);
+              obj.style.WebkitTransform = "translateX(" + -l + "px)";
+              if (l > 80) {
+                l = 80;
+                obj.style.WebkitTransform = "translateX(" + -l + "px)";
+              }
+            }
+          }
+        });
+      } else if (objX < 0) {
+        window.addEventListener('touchmove', function(event) {
+          event.preventDefault();
+          var obj = event.target.parentNode;
+          if (obj.className == "list-li") {
+            moveX = event.targetTouches[0].pageX;
+            X = moveX - initX;
+            if (X >= 0) {
+              var r = -80 + Math.abs(X);
+              obj.style.WebkitTransform = "translateX(" + r + "px)";
+              if (r > 0) {
+                r = 0;
+                obj.style.WebkitTransform = "translateX(" + r + "px)";
+              }
+            } else { //向左滑动
+              obj.style.WebkitTransform = "translateX(" + -80 + "px)";
+            }
+          }
+        });
+      }
+
+    })
+    window.addEventListener('touchend', function(event) {
+      event.preventDefault();
+      var obj = event.target.parentNode;
+      if (obj.className == "list-li") {
+        objX = (obj.style.WebkitTransform.replace(/translateX\(/g, "").replace(/px\)/g, "")) * 1;
+        if (objX > -40) {
+          obj.style.WebkitTransform = "translateX(" + 0 + "px)";
+          objX = 0;
+        } else {
+          obj.style.WebkitTransform = "translateX(" + -80 + "px)";
+          objX = -80;
+        }
+      }
+    })
+  })
+  </script>
+</head>
+
+<body>
+
+  <section class="list">
+    <ul class="list-ul">
+      <li id="li" class="list-li">
+        <div class="con">
+            
+            	平台消息
+          
+        </div>
+        <div class="btn">删除</div>
+      </li>
+    </ul>
+  </section>  
+</body>
+</html>

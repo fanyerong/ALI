@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商家详情</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/sellerDetail.css" />
+		<link rel="stylesheet" href="css/no.css" />		
+		<script  src="http://code.jquery.com/jquery-1.8.3.js"  integrity="sha256-dW19+sSjW7V1Q/Z3KD1saC6NcE5TUIhLJzJbrdKzxKc="  crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/sellerD.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>		
+	</head>
+	<body>
+		<div class="head">
+			<div class="logo_name">
+				<div class="logo">
+					<img src="images/logo.png"  />
+				</div>
+				<div class="jieshao">
+					<div class="logo_na"><a href="#" style="color: #FFFFFF;">诗奈尔上海总部<img src="images/youjian.png" /></a></div>
+					<div class="start">
+						<div class="staro"></div>
+						<span>4.0</span>
+					</div>
+					<a href="#">
+						<div class="addre">
+							<img src="images/address.png"  />
+							<span>北京市朝阳区万达广场3号楼1902室</span>
+						</div>	
+					</a>
+					<!--
+                    	如果用户收藏了本店，显示class名字为.shou_Y，如果未收藏则class为shouchang
+                   -->                   
+					<div class="shouchang"></div>						
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		        
+			var f = parseFloat($('.start span').text()); //分数
+    			console.log(f)
+				var w=(f/5)*2+'rem';
+				console.log(w)
+				$('.staro').css('width',w); //星星亮几颗
+    		
+		</script>
+		
+		<!--
+        	
+        	获取不同的衣服，可以给每一个li一个不同的类名，给相对应的放物品的容器一个类名，通过判断类名，获取到他总共的衣服数量，给li对应的a标签展示总数量
+                        放物品的容器是right下边的 ul 下边的li循环就行
+        -->
+		<div class="swiper-container" style="margin-top:40px">
+		   <div class="swiper-container-ul">
+		   	    <li class="swiper-container-ul-li active_on">洗护项目</li>
+                <li class="swiper-container-ul-li">评论</li>
+		   </div>
+		   <div class="swiper-wrapper">
+		   	  <div class="swiper-slide">
+		   	  	 <div class="content">
+		   	  	 	<div class="left" id="left">
+		   	  	 		<ul>
+		   	  	 			<li name='shangzhuang'><span>上装类</span><a>1</a></li>
+		   	  	 			<li name='xiazhuang'><span>下装类</span></li>
+							<li name='xiaojian'><span>小件类</span></li>
+							<li name='datauser'><span>日用，家居类</span></li>
+							<li name='cortex'><span>皮制品类</span></li>
+							<li name='close'><span>贴身衣物</span></li>
+							<li name='especial'><span>特殊衣服</span></li>							
+		   	  	 		</ul>
+		   	  	 	</div>
+		   	  	 	<div class="right" id="right">
+		   	  	 		<ul>
+		   	  	 			<li name='shangzhuang'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>上装类</span>
+					                <b>Top class</b>
+		   	  	 				</div>
+		   	  	 				<div >
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li name='xiazhuang'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>下装类</span>
+					                <b>Bottoms class</b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li name='xiaojian'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>小件类</span>
+					                <b>Small class</b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li name='datauser'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>日用、家居类</span>
+					                <b>Daily household</b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li class='cortex'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>皮制品类</span>
+					                <b>Leather category</b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li class='close'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>贴身衣物</span>
+					                <b>Intimates </b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<li name='especial'>
+		   	  	 				<div class="class-title">
+		   	  	 					<span>特殊衣物</span>
+					                <b>Special clothing</b>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 				<div>
+		   	  	 					<div class="li_on">
+										<div class="div_both">
+											<div class="both_top">
+												<span>8.5折</span>
+												<img src="images/yifu.png"  class="yifu"/>
+												<b class="yuan">2</b>
+											</div>
+											<div class="money">
+												<span>毛呢大衣</span>
+												<i>39元</i>
+											</div>
+										</div>
+					                </div>
+		   	  	 				</div>
+		   	  	 			</li>
+		   	  	 			<div class="kong" style="height:4rem;width:100%; clear: both;"></div>
+		   	  	 		</ul>
+		   	  	 	</div>		   	  	 	
+		   	  	 </div>
+		   	  </div>
+		   </div>
+		</div>
+		<div class="foot">
+			<div class="foot_left">
+				<div class="literals">
+					<img src="images/gouwuche.png" class="gouwuche"/>
+					<span class="frame">洗衣篓</span>
+				</div>
+				<div class="result">12</div>
+			</div>
+			<div class="foot_right">预约洗衣</div>
+		</div>
+		<!--
+        	点击洗衣篓出现的遮罩层
+        -->
+        <!--
+                                没有加过衣物，或者是清空洗衣篓显示class名为null_data
+         -->
+		<div class="Transparent">
+			<div class="Transparent_count">
+				<div class="Thetitle">
+					<div class="Thetitle_left">
+						<img src="images/gouwuche.png"  />
+						<span>洗衣篓</span>
+					</div>
+					<div class="Thetitle_right">
+						<img src="images/shanchu@2x.png"  />
+						<span>清空洗衣篓</span>
+					</div>
+				</div>
+				<div class="show_count">
+					
+					<div id="null_data" style="display: none;">
+						<img src="images/dsffg.png"  />
+						<span>暂无添加衣物</span>						
+		            </div>
+					<ul class="cloth_show">
+						<li>
+							<div class="li_left">
+								<img src="images/yiwu.png"  />
+								<span>毛呢大衣</span>
+								<a>39元</a>
+							</div>
+							<div class="li_right">
+								<b class="discount">9折</b>
+								<span class="reduce">-</span><input type="number" class="count" value="1" readonly/><span class="addJ">+</span>
+							</div>
+						</li>
+						<li>
+							<div class="li_left">
+								<img src="images/yiwu.png"  />
+								<span>毛呢大衣</span>
+								<a>39元</a>
+							</div>
+							<div class="li_right">
+								<b class="discount">9折</b>
+								<span class="reduce">-</span><input type="number" class="count" value="1" readonly/><span class="addJ">+</span>
+							</div>
+						</li>
+						<li>
+							<div class="li_left">
+								<img src="images/yiwu.png"  />
+								<span>毛呢大衣</span>
+								<a>39元</a>
+							</div>
+							<div class="li_right">
+								<b class="discount">9折</b>
+								<span class="reduce">-</span><input type="number" class="count" value="1" readonly/><span class="addJ">+</span>
+							</div>
+						</li>
+						<li>
+							<div class="li_left">
+								<img src="images/yiwu.png"  />
+								<span>毛呢大衣</span>
+								<a>39元</a>
+							</div>
+							<div class="li_right">
+								<b class="discount">9折</b>
+								<span class="reduce">-</span><input type="number" class="count" value="1" readonly/><span class="addJ">+</span>
+							</div>
+						</li>
+					</ul>
+					<div class="Cardbag">
+						<div class="card1">
+							<img src="images/ping@2x.png"  />
+							<span>平台会员卡</span>
+							<!--<b>可用余额:<a>563</a></b>-->
+							<i class="no"></i>
+						</div>
+						<div class="card1">
+							<img src="images/yue@2x.png"  />
+							<span>返现余额</span>
+							<b>可用余额:<a>563</a></b>
+							<i class="off"></i>
+						</div>
+					</div>
+					<div class="team">
+						<div class="team_A">
+							<span>项目金额</span>
+							<b>￥453.00</b>
+						</div>
+						<div class="team_A">
+							<span>上门服务费</span>
+							<b>￥453.00</b>
+						</div>
+						<div class="team_A">
+							<span>平台会员卡</span>
+							<b style="color:#fc2319">￥453.00</b>
+						</div>
+						<div class="team_A">
+							<span>返现余额</span>
+							<b style="color:#fc2319">-￥453.00</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot-opt">
+				<div class="foot_top">请等待业务人员上门取件并确认价格</div>
+				<div class="foot_result">
+					<div class="result_left">
+						<span>预估价格：</span><a>￥173.00</a>
+					</div>
+					<div class="result_right">预约洗衣</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+<script type="text/javascript">
+  $(function(){
+    $('.content').css('height',$('.right').height()+370);
+    $('.left ul li').eq(0).addClass('active');
+    $(window).scroll(function(){
+    	
+      if($(window).scrollTop() >= 220){
+        $('.swiper-container-ul').css('position','fixed');
+        var  H = $('.swiper-container-ul').height();
+        $('.left').css('position','fixed');
+        $('.left').css('top',H);
+        $('.right').css('margin-left',$('.left').width());       
+      }else {
+        $('.swiper-container-ul').css('position','');
+        $('.left').css('position','');
+        $('.right').css('margin-left','');
+      };
+      //滚动到标杆位置,左侧导航加active
+      $('.right ul li').each(function(){
+        var target = parseInt($(this).offset().top-$(window).scrollTop()-300);
+        var i = $(this).index();
+        if (target<=0) {
+          $('.left ul li').removeClass('active');
+          $('.left ul li').eq(i).addClass('active');
+        }
+      });
+    });
+    $('.left ul li').click(function(){
+    	
+      var i = $(this).index('.left ul li');
+      $('body, html').animate({scrollTop:$('.right ul li').eq(i).offset().top-112},20);
+    });
+    $('.swiper-container-ul-li').click(function(){
+      var index = $(this).index();
+      if(index == 0){       
+        $('.swiper-container-ul-li').eq(0).addClass('actives');
+        $('.swiper-slide').eq(1).hide();
+        $('.swiper-container-ul-li').eq(1).removeClass('actives');
+      }else {        
+        $('.swiper-container-ul-li').eq(0).removeClass('actives');
+        $('.swiper-slide').eq(1).show();
+        $('.swiper-container-ul-li').eq(1).addClass('actives');
+      }
+    });
+    
+  });
+  </script>
+  <script type="text/javascript">
+  	$('.both_top').on('click',function(){
+  		var arr = [];  		
+  		var text = $(this).siblings().children('span').html();//获取到点击相应的衣服
+  	    var shuliang = $(this).children('b').html();//获取到相应衣服的数量
+  	    arr.push(text,shuliang);
+  	});
+  	$('.Thetitle_right').click(function(){
+  		$('.cloth_show').remove();
+  		$('#null_data').css('display','block');
+  		$('.both_top b').css('display','none');
+  		$('.both_top b').html('0');
+  		$('.left ul li a').css('display','none');
+  		$('.left ul li a').html('0')
+  	})
+  	
+  	$('.Thetitle').click(function(){  	
+  		$('.Transparent').slideUp(1000);
+  		$('Transparent').removeClass('TransparentY')
+  		$(document.body).css({
+		   "overflow-x":"auto",
+		   "overflow-y":"auto"
+		 })
+  	})
+        
+  </script>
+	</body>
+</html>

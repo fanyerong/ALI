@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员卡包</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/vipcard.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+	</head>
+	<body>		
+		<div class="box_card">
+			<span>充值码：<input type="number" word='请输入正确的充值码' id="Topupcode"/></span>
+			<span>验证码：<input type="text" word='请输入正确的验证码' id="Verificationcode"/><b></b></span>
+		</div>
+		<!--
+        	默认是隐藏的，当用户输入正确充值码才会显示余额；
+        -->
+		<div class="balance">金额:500.00</div>
+		<div class="list_chaxun">
+			<div class="balanceCH">查询余额</div>
+			<div class="recharge" disabled='true'>充值</div>
+		</div>
+		<div class="masklayer" style="display: none;"></div>
+		<div class="confirmation" style="display: none;">
+		   <span>请核对您的信息</span>
+		   <a>确定</a>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				$('.list_chaxun div').on('click',function(){
+					$(this).addClass('onchaxun').siblings().removeClass('onchaxun')
+				})
+			})
+		    $('.balance').html('');
+			var text = $('#Topupcode').attr('word');
+			var YZtext = $('#Verificationcode').attr('word');
+			var Topupcodetext = $('#Topupcode').val();
+			var Verificationcodetext = $('#Verificationcode').val();
+			//获取后台返回的验证码 $('.box_card span b');
+			//判断用户输入的充值码是否在后台存在;如果存在可显示金额；
+			$('.balanceCH').on('click',function(){
+				if(Topupcodetext!='充值码'){
+	              $('.masklayer').css('display','block');
+	              $('.masklayer').html(text);
+	              setTimeout(function(){$('.masklayer').css('display','none')},2000)
+                }else{
+                	$('.balance').html('余额');
+                }
+			});
+			$('.balanceCH').on('click',function(){
+				if(Verificationcodetext!='验证码'){
+				  $('.masklayer').css('display','block');
+	              $('.masklayer').html(YZtext);
+	              setTimeout(function(){$('.masklayer').css('display','none')},2000)
+				}else{
+					$('.balance').html('余额');
+				}
+			});
+			
+			$('.balanceCH').on('click',function(){
+				if(Topupcodetext||Verificationcodetext==''){
+				  $('.masklayer').css('display','block');
+	              $('.masklayer').html('请输入您的信息');
+	              setTimeout(function(){$('.masklayer').css('display','none')},2000)
+				}else{
+					$('.balance').html('余额');
+				}
+			});
+			
+			$('.recharge').on('click',function(){
+				if(Topupcodetext||Verificationcodetext==''){
+				  $('.masklayer').css('display','block');
+	              $('.masklayer').html('请输入您的信息');
+	              setTimeout(function(){$('.masklayer').css('display','none')},2000)
+				}else{
+					//。。。。。
+				}
+			})		    
+		</script>
+	</body>
+</html>

@@ -1,0 +1,227 @@
+body{
+	background:#FFFFFF;
+}
+.top_1{
+	width:100%;
+	height:1.28rem;
+	background:url(../images/rated.png) no-repeat;
+	background-size:100% 100%;	
+}
+.top_1 img{
+	display: block;
+	width:0.22666666666666666rem;
+	height: 0.4rem;
+	float: left;
+	margin-left:0.26666666666666666rem;
+	margin-top:0.46666666666666666rem;
+}
+.top_1 span{
+	width:9.453333333333333rem;
+	height:1.28rem;
+	line-height:1.28rem;
+	font-size:0.45rem;
+	color:#FFFFFF;
+	text-align:center;
+	float: left;
+}
+.nav_list{
+	width:100%;
+	height:1.2rem;
+	border-bottom:1px solid #E0E0E0;
+}
+
+.nva_lest_A{
+	width:5rem;
+	height:1.2rem;
+	float:left;
+	text-align:center;
+	float:left;
+}
+.nva_lest_A a{
+	display: inline-block;
+	width:auto;
+	line-height:1.2rem;
+	font-size:0.42rem;
+}
+.active_vip{
+	color:#333333;
+	border:none;
+}
+.nva_lest_A .active_on{
+	color:#09b1b0;
+	border-bottom:2px solid #09b1b0;
+	
+}
+.kabao{
+	width:100%;
+	height:auto;	
+}
+.card_main{
+	width:auto;
+	height:auto;
+	position: relative;
+    padding: 0.32rem 0.26666667rem;
+    box-sizing:border-box;
+}
+.big_card{
+    width:100%;
+    height:4.56rem;
+    background:url(../images/card_zd.png) no-repeat;
+    background-size:100% 100%;	
+}
+.card_top{
+	width:8.826666666666666rem;
+	height:1.3466666666666667rem;
+	border-bottom:2px dashed;
+	border-bottom-color: rgba(220,200,200,.5);
+	margin:auto;
+}
+.card_logo{
+	width:0.7333333333333333rem;
+	height:0.7333333333333333rem;
+	display: block;
+	float: left;
+	margin-top:0.32rem;
+	margin-left:0.06666666666666667rem;
+	border-radius:8px;
+	border:1px solid #E0E0E0;
+}
+.card_top span{
+	color:#FFFFFF;
+	font-size:0.43rem;
+	width:auto;
+	line-height:1.3466666666666667rem;
+	height:1.3466666666666667rem;
+	float:left;
+	margin-left:0.28rem;
+}
+.card_bott{
+	width:8.826666666666666rem;
+	height:3.1866666666666665rem;
+	
+	margin:auto;
+}
+.money_card{
+	width:100%;
+	height:2.0933333333333333rem;
+	
+}
+.money_left{
+	width:4.413333333333333rem;
+	height:100%;
+	float: left;
+	text-align:center;
+	font-size:1.2rem;
+	color:#FFFFFF;
+	line-height:2.0933333333333333rem;
+}
+.money_left a{
+	font-size:0.42rem;
+	margin-left:0.25rem;
+	color:#FFFFFF;
+}
+.money_right{
+	width:4.413333333333333rem;
+	height:100%;
+	float: left;
+	text-align:center;
+}
+.money_right span{
+	display: block;
+	width:100%;
+	margin-top:0.25rem;
+	color:#FFFFFF;
+	text-align:center;
+}
+.money_right span:first-child{
+	font-size:0.42rem;
+}
+.money_right span:last-child{
+	font-size:0.58rem;
+}
+.people_card{
+	width:100%;
+	height:0.76rem;
+}
+.people_left{
+	width:auto;
+	height:100%;
+	line-height:0.76rem;
+	color:#FFFFFF;
+	margin-left:0.25rem;
+	float:left;
+	font-size:0.42rem;
+}
+.people_right{
+	width:2.84rem;
+	height:0.76rem;
+	line-height:0.76rem;
+	float:right;
+	text-align:center;
+	margin-right:0.4rem;
+	background:#1bcec6;
+	border-radius:5px;
+	color:#FFFFFF;
+	font-size:0.42rem;
+}
+.otoo{
+	width: 100%;
+	height:auto;
+	text-align: center;
+}
+.otoo span{	
+	display: block;
+	width:100%;
+	height:1.21rem;
+	line-height:1.21rem;
+	color:#999999;
+	font-size:0.42rem;
+	text-align:center;
+}
+.otoo b{
+	width:auto;
+	margin:auto;
+	padding:0.25333333333333335rem 1.1466666666666667rem ;
+	border:1px solid #09b1b0;
+	text-align: center;
+	font-size:0.42rem;	
+	font-weight: normal;
+	display:inline-block;
+	margin-top:0.33rem;
+	color:#09b1b0;
+}
+.both{
+	width:6.906666666666666rem;
+	height:1.35rem;
+	text-align:center;
+	line-height: 1.35rem;
+	margin:auto;
+}
+.both span{
+	letter-spacing: 0.1rem;
+	width:0.48rem;
+	height:0.48rem;
+	display:block;
+	float:left;
+	background:url(../images/duiihao.png) no-repeat;
+	background-size:100% 100%;
+	margin-top:0.42rem;
+}
+.both b{
+	letter-spacing: 0.1rem;
+	margin-left:0.25rem;
+	display:block;
+	float:left;
+	font-weight: inherit;
+	font-size:0.42rem;
+	color:#333333;
+	
+}
+.both a{
+	letter-spacing: 0.1rem;
+	display:block;
+	float:left;
+	color:#09b1b0;
+	font-size:0.42rem;
+
+}

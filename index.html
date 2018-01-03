@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/layer.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+     <link rel="stylesheet" href="css/swiper.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="js/rem.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=625c102e2a4642ce6bf414545522ac28&plugin=AMap.Geocoder"></script> 
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/layer.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	.list{
+    		border-top:none;
+    	}
+    	.graybg{
+    		position: fixed;
+    		top:0rem;
+    		display: none;    		
+    	}
+    	
+    </style>
+    <!--<script type="text/javascript">
+    var time;
+    $(document).ready(function() {
+		//状态值,为1表示从切换城市页面跳会的页面
+		if($("#sta").text()==1){
+	        	// alert($.cookie('chocity'));
+	        	$("#address").text($.cookie('chocity'));
+	        	var a=$.cookie('lon');
+	        	var b=$.cookie('lat');
+	        	var c=$.cookie('adcode');
+	        	var d=$.cookie('nowad');
+	        	var e=$.cookie('chocity');
+	        	var f=$.cookie('nowcity');
+	        	changeCity(a,b,c,d,e,f);
+	        	$(".graybg").css("display","none");
+            return false;
+       }else if($.cookie('realchoose') != null){
+        //10分钟有效期,10分钟内不会重新定位,判断是否需要重新定位
+        	// alert("1");
+	        	$("#address").text($.cookie('chocity'));
+	        	var a=$.cookie('lon');
+	        	var b=$.cookie('lat');
+	        	var c=$.cookie('adcode');
+	        	var d=$.cookie('nowad');
+	        	var e=$.cookie('chocity');
+	        	var f=$.cookie('nowcity');
+	        	changeCity(a,b,c,d,e,f);
+        		$(".graybg").css("display","none");
+            return false;
+        }else{
+        		//显示加载弹窗
+	 		$(".graybg").css("display","block");
+	 		//超时函数,超时未定位成功,给出提示
+		 	time=setTimeout(function(){time_out()},30000);
+	
+	
+		 	if($(".graybg").css("display")=="block"){
+				var lnglatXY;
+				var log;
+				var lat;
+	
+				//定义地图
+				var mapObj = new AMap.Map('container',{
+					resizeEnable: true,
+					zoom: 16
+				});
+	
+					
+				//调用定位插件	
+				mapObj.plugin('AMap.Geolocation', function () {
+				    geolocation = new AMap.Geolocation({
+				        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+				        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+				        maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+				        convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+				        showButton: true,        //显示定位按钮，默认：true
+				        buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+				        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+				        showMarker: false,        //定位成功后在定位到的位置显示点标记，默认：true
+				        showCircle: false,        //定位成功后用圆圈表示定位精度范围，默认：true
+				        panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+				        zoomToAccuracy:false      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+				    });
+				    
+				    mapObj.addControl(geolocation);
+				    geolocation.getCurrentPosition();//定位函数
+				    AMap.event.addListener(geolocation, 'complete', onPositonComplete);//返回定位信息
+				    AMap.event.addListener(geolocation, 'error', onPositonError);      //返回定位出错信息
+				});
+	
+				//定位成功,切换中心点,如果为当前城市,则定位当前位置,如果其他城市,则定位城市中心
+				function onPositonComplete(s){
+					
+					log=s.position.getLng();//当前位置经度
+					lat=s.position.getLat();//当前位置纬度
+					lnglatXY = [log,lat];
+					$.cookie('lon', log,{ expires: 7,path: '/'});
+					$.cookie('lat', lat,{ expires: 7,path: '/'});
+					clearTimeout(time);
+					regeocoder();
+	
+				}
+	
+				//定位失败
+				function onPositonError(s){
+	
+//					layer.open({
+//						content:'定位失败',
+//						btn:'确定',
+//						style: 'position:fixed; left:15%; top:30%; width:7rem; height:4rem; font-size:0.36rem; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+//					});
+					
+					var data={
+						content:'定位失败',
+						yes:function(){
+							
+						}
+					}
+					smh_alert2(data);
+					$(".graybg").css("display","none");
+				}
+	
+	
+				function regeocoder() {  //逆地理编码
+					var geocoder = new AMap.Geocoder({
+						radius: 1000,
+						extensions: "all"
+					});        
+					geocoder.getAddress(lnglatXY, function(status, result) {
+						if (status === 'complete' && result.info === 'OK') {
+							geocoder_CallBack(result);
+						}
+					});        
+				}
+	
+				function geocoder_CallBack(data) {
+					var address = data.regeocode.addressComponent; //返回地址描述
+					var nowad = address.adcode;
+					var choad=$.cookie('adcode');
+		            var nowcity;
+		            var chocity=$.cookie('chocity');
+		            var num=0;
+		            $(".graybg").css("display","none");
+					var detail_addr=data.regeocode.formattedAddress; 
+					console.log();
+					$.cookie('detailAddr',detail_addr,{expires: 7,path: '/'});
+					
+		            //判断是否是直辖市
+					if(address.city==""){
+						nowcity=address.province;
+					}	
+					else{
+						nowcity=address.city;
+					}
+	
+					//判断是不是第一次进入
+		            if(chocity==null){
+		            	
+			            	chocity=nowcity;
+			            	choad=nowad;
+			            	num=1;
+		            }
+		            
+		            //判断用户选择的城市是否是当前城市
+		            if(chocity!=nowcity){
+						var data={
+							content:'检测到您当前城市为'+nowcity+',确定切换吗?',
+							yes:function(){
+								chocity=nowcity;
+		                    		choad=nowad;
+								changeCity(log,lat,choad,nowad,chocity,nowcity);
+							},
+							no:function(){
+								changeCity(log,lat,choad,nowad,chocity,nowcity);
+							}
+						}
+						smh_confirm2(data);
+						
+//		            		layer.open({
+//							content:'检测到您当前城市为'+nowcity+',确定切换吗?',
+//							btn:['切换','取消'],
+//							yes:function(index){
+//								chocity=nowcity;
+//		                    	choad=nowad;
+//		                    	changeCity(log,lat,choad,nowad,chocity,nowcity);
+//								layer.close(index);
+//							},
+//							no:function(index){
+//								changeCity(log,lat,choad,nowad,chocity,nowcity);
+//							},
+//							style: 'position:fixed; left:15%; top:30%; width:7rem; font-size:0.36rem; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+//						}); 
+	
+		            }else{
+		            	changeCity(log,lat,choad,nowad,chocity,nowcity);
+		            } 
+		            
+		        }
+			}
+       }		
+	});
+
+    //超时处理,待处理
+	function time_out(){
+		var data={
+			content:'定位失败',
+			yes:function(){
+				
+			}
+		}
+		smh_alert2(data);
+//		layer.open({
+//			content:'定位失败',
+//			btn:'确定',
+//			style: 'position:fixed; left:15%; top:30%; width:7rem; font-size:0.36rem; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+//		});
+		$(".graybg").css("display","none");
+		return false;
+	};
+
+
+	//post请求后台,获取城市信息
+    function changeCity(lng,lat,choosecode,nowcode,choosecity,nowcity) {
+
+    	$.post("__CONTROLLER__/merchant",{log:lng,lat:lat,ad:choosecode},function(data){
+
+			 if(data.state==-1){
+			 	$("#address").text($.cookie('chocity'));
+			 	var da={
+					content:'当前城市尚未开通,敬请期待......',
+					yes:function(){
+						
+					}
+				}
+				smh_alert2(da);
+			 	
+//			 	layer.open({
+//					content:'当前城市尚未开通,敬请期待......',
+//					btn:'确定',
+//					style: 'position:fixed; left:15%; top:30%; width:7rem; font-size:0.36rem; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+//				});
+			 	console.log(data);
+			 }else{
+			 	$("#address").text(choosecity);
+	             $.cookie('chocity',choosecity,{expires: 7,path: '/'});
+				 $.cookie('adcode', choosecode,{expires: 7,path: '/'});
+			 }
+			 
+			 
+			 //刷新图片轮播图
+			 
+		 	$('.swiper-slide').remove();
+		 	for(var d=0;d<data.data.length;d++){
+		 		var html='<div class="swiper-slide"><a href="'+data.data[d].url+'"><img src="'+data.data[d].img+'" alt="" width="100%" height="100%"/></a></div>'
+				$('.swiper-wrapper').append(html);	
+		 	}
+		 	console.log(data);
+		 	var swiper = new Swiper('.swiper-container', {
+	            pagination: '.swiper-pagination',
+	            paginationClickable: true,
+	            autoplayDisableOnInteraction : false,
+	            autoplay: 3000
+	        });
+			 
+			 //更新cookie
+			 $.cookie('nowcity',nowcity,{expires: 7,path: '/'});
+	         $.cookie('nowad',nowcode,{expires: 7,path: '/'});
+			 
+			 //定时cookie,
+//			 var expiresDate= new Date();
+//			 expiresDate.setTime(expiresDate.getTime() + (10 * 60 * 1000));
+//			 $.cookie('realchoose', $.cookie('chocity'),{expires: expiresDate,path: '/'}); 
+           
+        });
+    }
+			
+
+	</script>-->
+  </head>  
+  <body style="background-color:#FFFFFF">    
+	  	<div id="addr">
+          <a href="#">
+              <span id="address" style="color:#FFFFFF">北京市</span>
+              <span><img src="images/index_zhankai.png" alt="" /></span>
+          </a>
+       	</div>
+	   <!--
+				默认的是class="show_no"没有消息提示
+            	接收消息，当有消息提示的时候就显示第二个span。class="show"
+            -->
+			<div id="fk">
+				<span class="show_no" ><img src="images/ghgfh.png" /></span>
+				<span class="show" style="display: none;"><img src="images/sfgf.png" /></span>
+			</div>
+    </div>
+      <header >
+          <div class="swiper-container" style="height:100%;">
+            <div class="swiper-wrapper">
+                 <div class="swiper-slide"><img src="images/index_banner.png" alt="" width="100%" height="100%"/></div>
+                <div class="swiper-slide"><img src="images/index_banner.png" alt="" width="100%" height="100%"/></div>
+                <div class="swiper-slide"><img src="images/index_banner.png" alt="" width="100%" height="100%"/></div>
+            </div>
+            <div class="swiper-pagination" style="text-align:right;"></div>
+        </div>
+		
+        <!-- Initialize Swiper -->
+        <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            autoplayDisableOnInteraction : false,
+            autoplay: 3000
+        });
+        </script>
+        
+     </header>
+     <div class="roll">
+			    <div class="label">平台资讯</div>
+			<div id="box">
+				<ul id="scroll">
+					<li><a>平台资讯11111</a></li>
+					<li><a>平台资讯222222</a></li>
+					<li><a>平台资讯333333</a></li>
+					<li><a>平台资讯444444</a></li>
+					<li><a >平台资讯55555555</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="count" style="background:#FFFFFF;">
+			<div class="nav">
+			  <span>—— 专业精洗  ——</span>
+			</div>
+			<div class="list">
+				<div class="list_one"><img src="images/gao@2x.png" /></div>	
+				<div class="list_one"><img src="images/jia@2x.png" /></div>	
+				<div class="list_one"><img src="images/pi@2x.png" /></div>	
+				<div class="list_one"><img src="images/ri@2x.png" /></div>	
+			</div>
+		</div>
+    <div class="foot" style="background:#FFFFFF">
+			<div class="xiadan"><img src="images/xiadan@2x.png" /></div>
+			<div class="foot_list">
+				<div class="foot_left">首页</div>
+				<div class="foot_right">我的</div>					
+			</div>
+		</div>
+     <div class="graybg" style="display: none;"><div><img src="images/jiazaizhong.gif" alt="" /><p>定位中,请稍后......</p></div></div> 
+    <!--
+    	平台资讯效果
+    -->
+     
+<script type="text/javascript">  
+window.onload = function() {  
+ dMarquee('scroll');  
+}  
+  
+function dMarquee(id){  
+ var speed=20; //速度  
+ var stop=1000; //停止时间   
+  
+ var ul = document.getElementById(id);//获取ul元素  
+ var rows=ul.getElementsByTagName('li').length;//获取li个数  
+ var height = ul.getElementsByTagName('li')[0].offsetHeight;//取得第一个li的高度  
+  
+ ul.innerHTML += ul.innerHTML;//获取所有li  
+  
+ var timeID = false;//settime的时间标示  
+ //移动方法  
+ var play = function() {  
+  ul.scrollTop++;//移动滚动条  
+  
+  //移动到底的时候恢复为零  
+  if(ul.scrollTop==rows*height){  
+   ul.scrollTop=0;  
+  }  
+    //每次滚动  
+  if(ul.scrollTop%height==0) {  
+   timeID = setTimeout(play,stop);  
+  }else{  
+   timeID = setTimeout(play,speed);  
+  }   
+ }  
+  
+ timeID = setTimeout(play,stop);  
+  
+  
+ ul.onmouseover = function() {clearTimeout(timeID);}  
+ ul.onmouseout = play;  
+}  
+  
+</script>  
+  </body>
+</html>

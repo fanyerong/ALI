@@ -1,0 +1,59 @@
+
+.foot{
+	width:100%;
+	height:1.51rem;
+	position:fixed;
+	bottom:0;
+	background:#FFFFFF;
+}
+.xiadan{
+	width:2.24rem;
+	height:2.24rem;
+	position:absolute;
+	top:-1rem;
+	left:3.88rem;
+	z-index:999;
+	
+}
+.xiadan img{
+	display:block;
+	width:2.24rem;
+	height:2.24rem;
+}
+.foot_list{
+	width:100%;
+	height:1.51rem;
+	border-top:1px solid #e6e6e6;
+	position: absolute;
+	bottom:0;
+}
+.foot_left{
+	width:3.8933333333333335rem;
+	float:left;
+	height:1.51rem;
+	background:url(../images/index_footleft.png) no-repeat;
+	background-size:0.6133333333333333rem 0.5866666666666667rem;
+
+	background-position-y:0.18666666666666668rem;
+	background-position-x: center;
+	text-align:center;
+	color:#999999;
+	font-size:0.4rem;
+	line-height:2.3rem;
+}
+.foot_right{
+	width:3.8933333333333335rem;
+	float:right;
+	height:1.51rem;
+	background:url(../images/foot_rightY.png) no-repeat;
+	background-size:0.52rem 0.5866666666666667rem;
+	background-position-y:0.18666666666666668rem;
+	background-position-x: center;
+	text-align:center;
+	color:#0eb3b2;
+	font-size:0.4rem;
+	line-height:2.3rem;
+}
+.center_art_bottom{
+	margin-bottom:2.4rem;
+}

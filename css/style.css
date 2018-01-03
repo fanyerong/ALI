@@ -1,0 +1,22 @@
+
+.tabmain{}
+ .tabmain .tabGroup{}
+.tabmain .tabGroup li{}
+.tabmain .tabGroup li.selectedTab{background:#fff;color:#1d9fd3;}
+.tabmain .tabContent{background-color:#fff;color:#777;min-height:200px;}
+
+#container{background:#fff;overflow:hidden;}
+#slider{position:absolute;top:0px;right:0;width:6px;border-radius:6px;background:#ccc;cursor:pointer;}
+#sliderParent{position:absolute;left:0;height:0;width:608px;z-index:999;}
+#outerWrap{position:relative;z-index:999}
+
+/*滚动条*/
+.wrapacon{position:relative;float:left;width:468px;height:360px;margin-top:5px;overflow:hidden;}
+.wrapaconlis{position:absolute;left:0;top:0;width:450px;}
+.scrbar{position:relative; width:4px; height:355px;border:1px solid #f4f4f4;border-radius:20px;background-color:#f4f4f4; float:left;left:443px;margin-left:15px;}
+.scrbar .barbg{position:absolute;right:-1px;top:50px;width:2px;height:105px;border:2px solid #dadada;background-color:#dadada;border-radius:20px;}
+
+
+
+
+
